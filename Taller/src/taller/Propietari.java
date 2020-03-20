@@ -17,7 +17,7 @@ public class Propietari implements Serializable {
     private String nom;
     private String direccio;
     private String tel;
-    
+
     // Constructors:
     public Propietari() {
     }
@@ -29,44 +29,12 @@ public class Propietari implements Serializable {
 		this.direccio = direccio;
 		this.tel = tel;
 	}
-    
-    // getters i setters
-    public Long getId() {
-		return id;
-	}
 
-	public String getDni() {
-		return dni;
-	}
 
-	public String getNom() {
-		return nom;
-	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getDireccio() {
-		return direccio;
-	}
-
-	public void setDireccio(String direccio) {
-		this.direccio = direccio;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	
 	// String Representation:
     @Override
     public String toString() {
-        return id + " -> " + dni + " | " + nom + " | " + direccio + " | " + tel;
+        return dni + " | " + nom + " | " + direccio + " | " + tel;
     }
 } 
