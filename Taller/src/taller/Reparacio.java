@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Reparacio implements Serializable {
@@ -17,6 +18,9 @@ public class Reparacio implements Serializable {
     private Date dataFi;
     private String descripcio;
     private double hores;
+    
+    @ManyToOne
+    private Unitats unitats;
 
     // Constructors:
     public Reparacio() {

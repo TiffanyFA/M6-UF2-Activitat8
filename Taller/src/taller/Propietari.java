@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Propietari implements Serializable {
@@ -18,6 +19,9 @@ public class Propietari implements Serializable {
     private String direccio;
     private String tel;
 
+    @ManyToOne
+    private Vehicle vehicle;
+    
     // Constructors:
     public Propietari() {
     }

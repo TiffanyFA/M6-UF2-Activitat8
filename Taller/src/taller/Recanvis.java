@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Recanvis implements Serializable {
@@ -16,6 +17,9 @@ public class Recanvis implements Serializable {
     private String fabricant;
     private String descripcio;
     private double preuUnitat;
+    
+    @ManyToOne
+    private Unitats unitats;
 
     // Constructors:
     public Recanvis() {
