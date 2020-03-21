@@ -31,13 +31,14 @@ public class Vehicle {
 	public Vehicle() {
 	}
 
-	public Vehicle(String matricula, String marca, String model, String asseguradora, boolean itv) {
+	public Vehicle(String matricula, String marca, String model, String asseguradora, boolean itv, Propietari propietari) {
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
 		this.model = model;
 		this.asseguradora = asseguradora;
 		this.itv = itv;
+		this.propietari = propietari;
 	}
 
 	public Long getId() {
