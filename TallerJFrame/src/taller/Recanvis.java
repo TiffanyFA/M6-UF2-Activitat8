@@ -1,29 +1,26 @@
 package taller;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Recanvis implements Serializable {
+public class Recanvis {
 	private static final long serialVersionUID = 1L;
 
 	// Persistent Fields:
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	private String fabricant;
 	private String descripcio;
 	private double preuUnitat;
-
-	@OneToMany(targetEntity = Unitats.class)
-	private List unitats;
 
 	// Constructors:
 	public Recanvis() {
@@ -64,12 +61,24 @@ public class Recanvis implements Serializable {
 		this.preuUnitat = preuUnitat;
 	}
 
-	public List getUnitats() {
-		return unitats;
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
 	}
 
-	public void setUnitats(List unitats) {
-		this.unitats = unitats;
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are not set
+		if (!(object instanceof Recanvis)) {
+			return false;
+		}
+		Recanvis other = (Recanvis) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
 	}
 
 	// String Representation:

@@ -1,30 +1,27 @@
 package taller;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Propietari implements Serializable {
+public class Propietari {
 	private static final long serialVersionUID = 1L;
 
 	// Persistent Fields:
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	private String dni;
 	private String nom;
 	private String direccio;
 	private String tel;
-
-	@OneToMany(targetEntity = Vehicle.class)
-	private List vehicles;
 
 	// Constructors:
 	public Propietari() {
@@ -74,12 +71,24 @@ public class Propietari implements Serializable {
 		this.tel = tel;
 	}
 
-	public List getVehicles() {
-		return vehicles;
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
 	}
 
-	public void setVehicles(List vehicles) {
-		this.vehicles = vehicles;
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are not set
+		if (!(object instanceof Propietari)) {
+			return false;
+		}
+		Propietari other = (Propietari) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
 	}
 
 	// String Representation:

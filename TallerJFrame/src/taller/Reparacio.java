@@ -1,11 +1,11 @@
 package taller;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -13,12 +13,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Reparacio implements Serializable {
+public class Reparacio {
 	private static final long serialVersionUID = 1L;
 
 	// Persistent Fields:
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long id;
 	@Temporal(TemporalType.DATE)
 	Date dataInici;
@@ -29,9 +29,6 @@ public class Reparacio implements Serializable {
 
 	@ManyToOne
 	private Vehicle vehicle;
-
-	@OneToMany(targetEntity = Unitats.class)
-	private List unitats;
 
 	// Constructors:
 	public Reparacio() {
@@ -89,12 +86,24 @@ public class Reparacio implements Serializable {
 		this.vehicle = vehicle;
 	}
 
-	public List getUnitats() {
-		return unitats;
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (id != null ? id.hashCode() : 0);
+		return hash;
 	}
 
-	public void setUnitats(List unitats) {
-		this.unitats = unitats;
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are not set
+		if (!(object instanceof Reparacio)) {
+			return false;
+		}
+		Reparacio other = (Reparacio) object;
+		if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
 	}
 
 	// String Representation:
